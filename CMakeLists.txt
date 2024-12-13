@@ -22,14 +22,21 @@ endif ()
 include (GNUInstallDirs)
 set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}")
 set (CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}")
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}")
 
 # configure targets
 set (DIR_SRC_ROOT "${PROJECT_SOURCE_DIR}/src")
 
 include_directories (${DIR_SRC_ROOT})
 
-option (BUILD_SHARED_LIBS "Build using shared libraries" ON)
-
 aux_source_directory (${DIR_SRC_ROOT} PROJECT_SOURCE_FILES)
 
 add_library (cmakeproject ${PROJECT_SOURCE_FILES})
+
+unset (CMAKE_ARCHIVE_OUTPUT_DIRECTORY)
+unset (CMAKE_LIBRARY_OUTPUT_DIRECTORY)
+unset (CMAKE_RUNTIME_OUTPUT_DIRECTORY)
+
+
+# configure snippet
+add_subdirectory ("snippet")
