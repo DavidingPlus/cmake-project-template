@@ -5,6 +5,11 @@ set (CMAKE_CXX_STANDARD_REQUIRED true)
 
 project ("CMake Project")
 
+
+# configue included headers
+set (DIR_SRC_ROOT "${PROJECT_SOURCE_DIR}/src")
+include_directories (${DIR_SRC_ROOT})
+
 # configure compiler cross platform
 if (CMAKE_HOST_WIN32)
     include (config-win32.cmake)
@@ -20,17 +25,13 @@ endif ()
 
 # configure output dir of static and shared library
 include (GNUInstallDirs)
+
 set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}")
 set (CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}")
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}")
 
 # configure targets
-set (DIR_SRC_ROOT "${PROJECT_SOURCE_DIR}/src")
-
-include_directories (${DIR_SRC_ROOT})
-
 aux_source_directory (${DIR_SRC_ROOT} PROJECT_SOURCE_FILES)
-
 add_library (cmakeproject ${PROJECT_SOURCE_FILES})
 
 unset (CMAKE_ARCHIVE_OUTPUT_DIRECTORY)
