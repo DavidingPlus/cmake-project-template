@@ -13,7 +13,6 @@ include (GoogleTest)
 aux_source_directory (${CMAKE_CURRENT_SOURCE_DIR} SRC_GTEST)
 add_executable (gtest_testrun EXCLUDE_FROM_ALL ${SRC_GTEST})
 target_link_libraries (gtest_testrun gtest gtest_main cmakeproject)
-gtest_discover_tests (gtest_testrun)
 
 add_custom_target (tests)
 add_dependencies (tests gtest_testrun)
