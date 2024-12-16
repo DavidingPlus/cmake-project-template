@@ -1,0 +1,30 @@
+# Template: https://github.com/actions/starter-workflows/blob/main/ci/cmake-multi-platform.yml
+name: Run Unit Test On Linux
+
+on:
+  push:
+    branches:
+    - feature-liuzx-ci
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Configure CMake
+      run: |
+
+        cd ${{github.workspace}}
+
+        mkdir -p build && cd build
+
+        cmake -DWITH_GTEST=ON ..
+
+    - name: Build
+      run: |
+
+        cd ${{github.workspace}}/build
+
+        make tests
