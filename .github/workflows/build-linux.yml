@@ -4,7 +4,7 @@ name: Build On Linux
 on:
   push:
     branches:
-    - feature-liuzx-ci
+    - master
 
 jobs:
   build:

@@ -4,7 +4,7 @@ name: Run Unit Test On Linux
 on:
   push:
     branches:
-    - feature-liuzx-ci
+    - master
 
 jobs:
   build:
