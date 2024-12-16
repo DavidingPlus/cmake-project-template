@@ -9,20 +9,3 @@ message ("-- Using C++ Compiler: ${CMAKE_CXX_COMPILER} (${CMAKE_CXX_COMPILER_VER
 
 
 option (BUILD_SHARED_LIBS "Build using shared libraries" ON)
-
-
-# configure unit test
-option (WITH_GTEST "Enable unit tests by GoogleTest" OFF)
-
-if (WITH_GTEST)
-    message ("-- Unit test by GoogleTest is enabled")
-
-else ()
-    message ("-- Unit test by GoogleTest is disabled")
-
-endif ()
-
-if (WITH_GTEST)
-    add_subdirectory (test)
-
-endif ()
