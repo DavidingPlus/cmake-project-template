@@ -1,0 +1,29 @@
+# Template: https://github.com/actions/starter-workflows/blob/main/ci/cmake-multi-platform.yml
+name: Build On Windows
+
+on:
+  push:
+    branches:
+    - feature-liuzx-ci
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Configure CMake
+      run: |
+
+        cd ${{github.workspace}}
+
+        mkdir -p build && cd build
+
+        cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} ..
+
+    - name: Build
+      run: cmake --build ./ --config ${{env.BUILD_TYPE}}
