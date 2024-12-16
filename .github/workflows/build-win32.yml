@@ -26,4 +26,8 @@ jobs:
         cmake -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} ..
 
     - name: Build
-      run: cmake --build ./ --config ${{env.BUILD_TYPE}}
+      run: | 
+
+        cd ${{github.workspace}}/build
+
+        cmake --build ./ --config ${{env.BUILD_TYPE}}

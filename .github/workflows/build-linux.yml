@@ -23,4 +23,8 @@ jobs:
         cmake ..
 
     - name: Build
-      run: make
+      run: |
+
+        cd ${{github.workspace}}/build
+
+        make
