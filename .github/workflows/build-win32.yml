@@ -4,7 +4,7 @@ name: Build On Windows
 on:
   push:
     branches:
-    - feature-liuzx-unit-test
+    - master
 
 jobs:
   build:
