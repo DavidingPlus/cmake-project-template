@@ -34,4 +34,8 @@ jobs:
 
     - name: Run Unit Test
       working-directory: ${{github.workspace}}
-      run: cmake --build --preset cmake-project-release -t tests
+      run: |
+
+        cmake --build --preset cmake-project-release -t tests
+
+        .\build\test\Release\gtest-testrun.exe
