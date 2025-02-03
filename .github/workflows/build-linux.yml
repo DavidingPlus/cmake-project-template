@@ -38,4 +38,4 @@ jobs:
 
         cmake --build --preset cmake-project-release -t tests
 
-        ./build/Release/test/gtest-run
+        ./build/Release/test/gtest-testrun
