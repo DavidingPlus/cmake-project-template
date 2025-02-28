@@ -3,7 +3,27 @@ cmake_minimum_required (VERSION 3.23)
 set (CMAKE_CXX_STANDARD 11)
 set (CMAKE_CXX_STANDARD_REQUIRED true)
 
-project ("CMake Project")
+
+# configure unit test
+option (WITH_GTEST "Enable unit tests by GoogleTest" OFF)
+
+if (NOT with_gtest)
+    unset (WITH_GTEST CACHE)
+
+endif ()
+
+if (WITH_GTEST)
+    message ("-- Unit test by GoogleTest is enabled")
+
+else ()
+    message ("-- Unit test by GoogleTest is disabled")
+
+endif ()
+
+if (WITH_GTEST)
+    find_package (GTest REQUIRED)
+
+endif ()
 
 
 # configue included headers
@@ -39,20 +59,8 @@ unset (CMAKE_LIBRARY_OUTPUT_DIRECTORY)
 unset (CMAKE_RUNTIME_OUTPUT_DIRECTORY)
 
 
-# configure snippet
 add_subdirectory ("snippet")
 
-
-# configure unit test
-option (WITH_GTEST "Enable unit tests by GoogleTest" OFF)
-
-if (WITH_GTEST)
-    message ("-- Unit test by GoogleTest is enabled")
-
-else ()
-    message ("-- Unit test by GoogleTest is disabled")
-
-endif ()
 
 if (WITH_GTEST)
     add_subdirectory (test)

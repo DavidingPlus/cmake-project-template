@@ -12,8 +12,16 @@ class ExampleRecipe(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     generators = "CMakeDeps"
 
+    options = {
+        "with_gtest": [True, False]
+    }
+    default_options = {
+        "with_gtest": True
+    }
+
     def requirements(self):
-        self.requires("gtest/1.12.1")
+        if self.options.with_gtest:
+            self.requires("gtest/1.12.1")
 
     def layout(self):
         cmake_layout(self)
@@ -21,4 +29,5 @@ class ExampleRecipe(ConanFile):
     def generate(self):
         tc = CMakeToolchain(self)
         tc.presets_prefix = "cmake-project"
+        tc.cache_variables["with_gtest"] = self.options.with_gtest
         tc.generate()
