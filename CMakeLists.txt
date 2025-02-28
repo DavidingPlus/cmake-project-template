@@ -4,6 +4,19 @@ set (CMAKE_CXX_STANDARD 11)
 set (CMAKE_CXX_STANDARD_REQUIRED true)
 
 
+if (NOT DEFINED PACKAGE_VERSION)
+    message ("-- WARNING: Package version is not defined, set as 0.0.0")
+    set (PACKAGE_VERSION "0.0.0")
+endif ()
+
+message ("-- Package version: ${PACKAGE_VERSION}")
+
+project ("CMake Project"
+    VERSION ${PACKAGE_VERSION}
+    DESCRIPTION "C/C++ 项目的 CMake 模板。"
+)
+
+
 # configure unit test
 option (WITH_GTEST "Enable unit tests by GoogleTest" OFF)
 
