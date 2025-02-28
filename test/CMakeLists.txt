@@ -8,4 +8,4 @@ add_custom_target (tests)
 add_dependencies (tests gtest-testrun)
 
 
-message ("-- Done configuring gtest")
+message ("-- [CMake Project] Done configuring gtest")

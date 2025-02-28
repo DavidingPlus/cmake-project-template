@@ -15,9 +15,9 @@ endforeach()
 
 # Run add_subdirectory() for each
 foreach (SUB_DIR ${SUB_DIRS})
-    message ("-- Building snippet: ${SUB_DIR}")
+    message ("-- [CMake Project] Building snippet: ${SUB_DIR}")
     add_subdirectory (${SUB_DIR})
 
 endforeach()
 
-message ("-- Done configuring snippets")
+message ("-- [CMake Project] Done configuring snippets")

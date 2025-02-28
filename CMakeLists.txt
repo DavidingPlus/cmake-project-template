@@ -5,11 +5,11 @@ set (CMAKE_CXX_STANDARD_REQUIRED true)
 
 
 if (NOT DEFINED PACKAGE_VERSION)
-    message ("-- WARNING: Package version is not defined, set as 0.0.0")
+    message ("-- [CMake Project] WARNING: Package version is not defined, set as 0.0.0")
     set (PACKAGE_VERSION "0.0.0")
 endif ()
 
-message ("-- Package version: ${PACKAGE_VERSION}")
+message ("-- [CMake Project] Package version: ${PACKAGE_VERSION}")
 
 project ("CMake Project"
     VERSION ${PACKAGE_VERSION}
@@ -26,10 +26,10 @@ if (NOT with_gtest)
 endif ()
 
 if (WITH_GTEST)
-    message ("-- Unit test by GoogleTest is enabled")
+    message ("-- [CMake Project] Unit test by GoogleTest is enabled")
 
 else ()
-    message ("-- Unit test by GoogleTest is disabled")
+    message ("-- [CMake Project] Unit test by GoogleTest is disabled")
 
 endif ()
 
