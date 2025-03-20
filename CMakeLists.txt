@@ -94,10 +94,15 @@ endif ()
 
 message ("-- [CMake Project] Install destination would be: ${CMAKE_INSTALL_PREFIX}")
 
+
+include (public-headers.cmake)
+set_target_properties (cmake-project PROPERTIES PUBLIC_HEADER ${CMAKE_PROJECT_PUBLIC_HEADERS})
+
 install (TARGETS cmake-project
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
 install (FILES ${PROJECT_BINARY_DIR}/.version DESTINATION .)
