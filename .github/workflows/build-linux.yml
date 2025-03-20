@@ -45,3 +45,5 @@ jobs:
       with:
         name: install
         path: build/Release/install
+        include-hidden-files: true
+        if-no-files-found: error
