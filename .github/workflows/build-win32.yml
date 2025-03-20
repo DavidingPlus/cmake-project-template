@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - master
+      - feature-liuzx-install
 
 jobs:
   build:
@@ -37,3 +38,9 @@ jobs:
       run: |
 
         cmake --build --preset cmake-project-release -t install
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: install
+        path: build/install
