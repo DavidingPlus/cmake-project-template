@@ -1,11 +1,10 @@
-name: Build On Windows
+name: Build On Win32
 
 on:
   workflow_dispatch:
   push:
     branches:
       - master
-      - feature-liuzx-install
 
 jobs:
   build:
