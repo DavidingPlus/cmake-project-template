@@ -16,6 +16,9 @@ project ("CMake Project"
     DESCRIPTION "C/C++ 项目的 CMake 模板。"
 )
 
+# write version file
+file (WRITE "${PROJECT_BINARY_DIR}/.version" "${PACKAGE_VERSION}")
+
 
 # configure unit test
 option (WITH_GTEST "Enable unit tests by GoogleTest" OFF)
@@ -79,3 +82,27 @@ if (WITH_GTEST)
     add_subdirectory (test)
 
 endif ()
+
+
+# configure install targets
+option (INSTALL_IN_PLACE "Set CMAKE_INSTALL_PREFIX inside PROJECT_BINARY_DIR" ON)
+
+if (INSTALL_IN_PLACE)
+    set (CMAKE_INSTALL_PREFIX "${PROJECT_BINARY_DIR}/install")
+
+endif ()
+
+message ("-- [CMake Project] Install destination would be: ${CMAKE_INSTALL_PREFIX}")
+
+
+include (public-headers.cmake)
+set_target_properties (cmake-project PROPERTIES PUBLIC_HEADER ${CMAKE_PROJECT_PUBLIC_HEADERS})
+
+install (TARGETS cmake-project
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+
+install (FILES ${PROJECT_BINARY_DIR}/.version DESTINATION .)
