@@ -1,4 +1,4 @@
-name: Run Unit Test On Linux
+name: Unit Test On Linux
 
 on:
   workflow_dispatch:

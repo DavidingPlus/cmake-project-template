@@ -1,4 +1,4 @@
-name: Run Unit Test On Windows
+name: Unit Test On Windows
 
 on:
   workflow_dispatch:
