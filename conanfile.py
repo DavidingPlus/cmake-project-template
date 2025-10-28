@@ -4,7 +4,7 @@ from conan.tools.cmake import cmake_layout, CMakeToolchain
 
 class ExampleRecipe(ConanFile):
     name = "cmake-project"
-    version = "1.1.1"
+    version = "1.2.1"
     description = "C/C++ 项目的 CMake 模板。"
     languages = "C++"
     author = "DavidingPlus"
